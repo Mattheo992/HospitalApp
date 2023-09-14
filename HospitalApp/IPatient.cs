@@ -1,6 +1,7 @@
 ﻿
 
 using System.Net.NetworkInformation;
+using static HospitalApp.PatientBase;
 
 namespace HospitalApp
 {
