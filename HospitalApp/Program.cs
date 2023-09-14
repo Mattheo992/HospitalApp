@@ -11,8 +11,7 @@ Console.WriteLine("4. ocena parametrów życiowych");
 Console.WriteLine("W celu przejścia do wyniku oceny proszę wcisnąć klawisz p");
 Console.WriteLine();
 
-var patient = new PatientInMemory("Mateusz", "Stępniak");
-patient.RatingAdded += PatientRatingAdded;
+
 
 void PatientRatingAdded(object sender, EventArgs args)
 {
@@ -20,25 +19,111 @@ void PatientRatingAdded(object sender, EventArgs args)
 }
 while (true)
 {
-    Console.WriteLine("Podaj kolejną ocenę stanu zdrowia pacjenta: ");
+    Console.WriteLine("Co chcesz zrobić? ");
+    Console.WriteLine("1 Dodaj oceny w pamięci programu oraz wyświetl statystki ");
+    Console.WriteLine("2 Dodaj oceny w pliku txt oraz wyświetl statystki ");
+    Console.WriteLine("3 Wyjść z programu ");
     var input = Console.ReadLine();
-    if (input == "p")
+    bool close = false;
+    while (!close)
     {
-        break;
-    }
+        switch (input)
+        {
+            case "1":
+                AddRatingToMemory();
+                break;
+            case "2":
+                AddRatingToTxtFile();
+                break;
+            case "3":
+                close = true;
+                break;
+            default:
+                Console.WriteLine("Niewłaściwa operacja.");
+                close = true;
+                break;
+        }
+        static void AddRatingToMemory()
+        {
+            Console.WriteLine("Podaj imię pacjenta: ");
+            var patientName = Console.ReadLine();
+            Console.WriteLine("Podaj nazwisko pacjenta: ");
+            var patientSurname = Console.ReadLine();
+            var patientInMemory = new PatientInMemory(patientName, patientSurname);
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("Wprowadź wszystkie oceny.\n" + "Aby zakończyć wprowadzanie danych wciśnij \"Q\".");
+            Console.WriteLine("---------------------------------------");
 
-    try
-    {
-        patient.AddRating(input);
-    }
+            while (true)
+            {
+                Console.WriteLine("Podaj ocenę: ");
+                var input = Console.ReadLine();
+                if (input == "q" | input == "Q")
+                {
+                    break;
+                }
+                try
+                {
+                    patientInMemory.AddRating(input);
 
-    catch (Exception e)
-    {
-        Console.WriteLine($"Exception catched: {e.Message}");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Exception catch: {e.Message}");
+                }
+            }
+            var statsInMemory = patientInMemory.GetStats();
+
+            Console.WriteLine($"Sattystyki policzone dla pacjenta: {patientName} {patientSurname}");
+            Console.WriteLine($"Kolor: {statsInMemory.ColorAlert}");
+            Console.WriteLine($"Average: {statsInMemory.Average:N2}");
+            Console.WriteLine($"Min: {statsInMemory.Min}");
+            Console.WriteLine($"Max: {statsInMemory.Max}");
+           
+        }
+        static void AddRatingToTxtFile()
+        {
+            Console.WriteLine("Podaj imię pacenta: ");
+            var patientName = Console.ReadLine();
+            Console.WriteLine("Podaj nawisko pacjenta: ");
+            var patientSurname = Console.ReadLine();
+            var patientInFile = new PatientInFile(patientName, patientSurname);
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("Wprowadź wszystkie oceny.\n" + "Aby zakończyć wprowadzanie danych wciśnij \"Q\".");
+            Console.WriteLine("---------------------------------------");
+
+            while (true)
+            {
+                Console.WriteLine("Podaj ocenę: ");
+                var input = Console.ReadLine();
+                if (input == "q" | input == "Q")
+                {
+                    break;
+                }
+                try
+                {
+                    patientInFile.AddRating(input);
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Exception catch: {e.Message}");
+                }
+            }
+
+            var statsInFile = patientInFile.GetStats();
+            Console.WriteLine($"Sattystyki policzone dla pacjenta: {patientName} {patientSurname}");
+            Console.WriteLine($"Kolor: {statsInFile.ColorAlert}");
+            Console.WriteLine($"Average: {statsInFile.Average:N2}");
+            Console.WriteLine($"Min: {statsInFile.Min}");
+            Console.WriteLine($"Max: {statsInFile.Max}");
+            Console.WriteLine("---------------------------------------");
+          
+        }
     }
 }
-var stats = patient.GetStats();
-Console.WriteLine($"Kolor strefy segregacji pacjenta: {stats.ColorAlert}");
-Console.WriteLine($"Średnia ocena pacjenta: {stats.Average}");
-Console.WriteLine($"Minimalna ocena pacjenta: {stats.Min}");
-Console.WriteLine($"Maksymalna ocena pacjenta: {stats.Max}");
+
+            
+           
+            
+        

@@ -6,7 +6,6 @@ namespace HospitalApp
     public class PatientInFile : PatientBase
     {
         private const string fileName = "ratings.txt";
-        public override event RatingAddedDelegate RatingAdded;
         public PatientInFile(string name, string surname)
             : base(name, surname)
         {
@@ -14,20 +13,16 @@ namespace HospitalApp
 
         public override void AddRating(float rating)
         {
-            if (rating >= 1 && rating <= 100)
+            if (rating >= 0 && rating <= 100)
             {
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(rating);
                 }
-                if (RatingAdded != null)
-                {
-                    RatingAdded(this, new EventArgs());
-                }
-                else
-                {
-                    throw new Exception("Niewłaściwa ocena");
-                }
+            }
+            else
+            {
+                throw new Exception("Invalid rating value");
             }
         }
         public override void AddRating(string rating)

@@ -6,7 +6,7 @@ namespace HospitalApp
     {
         public delegate void RatingAddedDelegate(object sender, EventArgs args);
 
-        public abstract event RatingAddedDelegate RatingAdded;
+     
         public PatientBase(string name, string surname)
         {
             this.Name = name;

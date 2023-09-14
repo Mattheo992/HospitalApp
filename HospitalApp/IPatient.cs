@@ -14,7 +14,7 @@ namespace HospitalApp
         void AddRating(int rating);
         void AddRating(long rating);
         void AddRating(double rating);
-        event RatingAddedDelegate RatingAdded;
+      
         Stats GetStats();
 
     }
