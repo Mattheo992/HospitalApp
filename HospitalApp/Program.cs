@@ -1,12 +1,11 @@
 ﻿using HospitalApp;
-
 Console.WriteLine("Witaj w programie do oceny stanu zdrowia pacjenta Szpitalnego Oddziału Ratunkowego");
 Console.WriteLine("=================================================================================_>");
 Console.WriteLine("Proszę o podanie oceny w skali od 1 do 100 w następujących kategoriach:");
-Console.WriteLine("1. stopień nasilenia bólu");
-Console.WriteLine("2. wzrokowa ocena pacjenta");
+Console.WriteLine("1. Stopień nasilenia bólu");
+Console.WriteLine("2. Wzrokowa ocena pacjenta");
 Console.WriteLine("3. Ocena świadomości");
-Console.WriteLine("4. ocena parametrów życiowych");
+Console.WriteLine("4. Ocena parametrów życiowych");
 Console.WriteLine("Ocena 1 bardzo dobry stan pacjenta, ocena 100 to bardzo zły stan pacjenta");
 Console.WriteLine();
 
@@ -52,7 +51,7 @@ while (true)
             {
                 Console.WriteLine("Podaj ocenę: ");
                 var input = Console.ReadLine();
-                if (input == "p" | input == "P")
+                if (input == "P" | input == "p")
                 {
                     break;
                 }
