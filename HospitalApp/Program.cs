@@ -90,7 +90,7 @@ while (true)
             {
                 Console.WriteLine("Podaj ocenę: ");
                 var input = Console.ReadLine();
-                if (input == "P" | input == "P")
+                if (input == "P" | input == "p")
                 {
                     break;
                 }
