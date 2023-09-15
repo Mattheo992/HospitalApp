@@ -18,7 +18,7 @@ namespace HospitalApp
             }
             else
             {
-                throw new Exception("Invalid grade value");
+                throw new Exception("Niewłaściwa wartość oceny");
             }
 
         }
@@ -59,25 +59,6 @@ namespace HospitalApp
                 stats.AddRating(rating);
             }
             return stats;
-        }
-
-        public void PrintStats()
-        {
-            if (ratings.Count == 0)
-            {
-                Console.WriteLine("Pacjent nie posiada oceny");
-                Console.ReadKey();
-                return;
-            }
-            var stats =GetStats();
-            Console.WriteLine($"Kolor strefy segregacji pacjenta: {stats.ColorAlert}");
-            Console.WriteLine($"Średnia ocena pacjenta: {stats.Average}");
-            Console.WriteLine($"Minimalna ocena pacjenta: {stats.Min}");
-            Console.WriteLine($"Maksymalna ocena pacjenta: {stats.Max}");
-        }
-        public void PrintDriver()
-        {
-            Console.WriteLine($"Obecny pacjent to : {Name}, {Surname}");
         }
     }
 }

@@ -22,7 +22,7 @@ namespace HospitalApp
             }
             else
             {
-                throw new Exception("Invalid rating value");
+                throw new Exception("Błędna wartość oceny");
             }
         }
         public override void AddRating(string rating)
