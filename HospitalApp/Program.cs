@@ -111,8 +111,15 @@ while (true)
             Console.WriteLine($"Wartość minimalna: {statsInFile.Min}");
             Console.WriteLine($"Wartość maksymalna: {statsInFile.Max}");
             Console.WriteLine("---------------------------------------");
-          
+            Console.WriteLine("Wciśnij \"Y\" jesli chcesz wykasować dane w pliku.\n");
+
+        var removalDecision = Console.ReadLine();
+        if (removalDecision == "y" | removalDecision == "Y")
+        {
+            patientInFile.RemoveDataFromFile();
+            Console.WriteLine("Dane w pliku zostały usunięte.");
         }
+    }
     }
 
 

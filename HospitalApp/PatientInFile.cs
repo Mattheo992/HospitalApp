@@ -84,6 +84,10 @@ namespace HospitalApp
             }
             return ratings;
         }
+        public void RemoveDataFromFile()
+        {
+            File.WriteAllText(fileName, "");
+        }
     }
 }
 
