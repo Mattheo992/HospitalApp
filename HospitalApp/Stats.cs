@@ -46,12 +46,12 @@ namespace HospitalApp
             this.Max = float.MinValue;
             this.Min = float.MaxValue;
         }
-        public void AddRating(float grade)
+        public void AddRating(float rating)
         {
             this.Count++;
-            this.Sum += grade;
-            this.Min = Math.Min(grade, this.Min);
-            this.Max = Math.Max(grade, this.Max);
+            this.Sum += rating;
+            this.Min = Math.Min(rating, this.Min);
+            this.Max = Math.Max(rating, this.Max);
         }
     }
 }

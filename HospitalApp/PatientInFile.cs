@@ -61,7 +61,8 @@ namespace HospitalApp
             var stats = new Stats();
             foreach (var rating in ratingsFromFile)
             {
-                stats.AddRating(rating);           }
+                stats.AddRating(rating);
+            }
             return stats;
         }
         private List<float> ReadRatingsFromFile()
@@ -85,3 +86,5 @@ namespace HospitalApp
         }
     }
 }
+
+
