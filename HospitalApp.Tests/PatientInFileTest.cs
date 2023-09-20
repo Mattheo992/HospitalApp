@@ -15,6 +15,7 @@ namespace HospitalApp.Tests
             //assert
             Assert.AreEqual(1, result.Min);
         }
+        
         [Test]
         public void ReturnProperMaxRating()
         {
@@ -28,6 +29,7 @@ namespace HospitalApp.Tests
             //assert
             Assert.AreEqual(99, result.Max);
         }
+        
         [Test]
         public void ReturnProperAverageRating()
         {
@@ -41,6 +43,7 @@ namespace HospitalApp.Tests
             //assert
             Assert.AreEqual(30, result.Average);
         }
+        
         [Test]
         public void ReturnProperColorAlertRating()
         {

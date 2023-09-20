@@ -1,10 +1,8 @@
-﻿using System.Diagnostics;
-namespace HospitalApp
+﻿namespace HospitalApp
 {
     public class Stats
     {
         public float Min { get; private set; }
-
         public float Max { get; private set; }
         public float Sum { get; private set; }
         public int Count { get; private set; }
@@ -34,11 +32,9 @@ namespace HospitalApp
                     default:
                         return "STREFA NIEBIESKA PACJENT WYCZEKUJĄCY - DO 240 MINUT";
                 }
-
-
-
             }
         }
+        
         public Stats()
         {
             this.Count = 0;
@@ -46,6 +42,7 @@ namespace HospitalApp
             this.Max = float.MinValue;
             this.Min = float.MaxValue;
         }
+       
         public void AddRating(float rating)
         {
             this.Count++;

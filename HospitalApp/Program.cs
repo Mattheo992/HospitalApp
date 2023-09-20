@@ -20,6 +20,7 @@ while (true)
     Console.WriteLine("Co chcesz zrobić? ");
     Console.WriteLine("1 Dodaj oceny w pamięci programu oraz wyświetl statystki ");
     Console.WriteLine("2 Dodaj oceny w pliku txt oraz wyświetl statystki ");
+    
     var input = Console.ReadLine();
     {
         switch (input)
@@ -38,7 +39,6 @@ while (true)
 
         static void AddRatingToMemory()
         {
-
             Console.WriteLine("Podaj imię pacjenta: ");
             var patientName = Console.ReadLine();
             Console.WriteLine("Podaj nazwisko pacjenta: ");
@@ -47,7 +47,8 @@ while (true)
             Console.WriteLine("---------------------------------------");
             Console.WriteLine("Wprowadź wszystkie oceny.\n" + "Aby zakończyć wprowadzanie danych wciśnij \"P\".");
             Console.WriteLine("---------------------------------------");
-            while (true)
+           
+        while (true)
             {
                 Console.WriteLine("Podaj ocenę: ");
                 var input = Console.ReadLine();
@@ -65,7 +66,8 @@ while (true)
                     Console.WriteLine($"Exception catch: {e.Message}");
                 }
             }
-            var statsInMemory = patientInMemory.GetStats();
+            
+        var statsInMemory = patientInMemory.GetStats();
 
             Console.WriteLine($"Statystyki policzone dla pacjenta: {patientName} {patientSurname}");
             Console.WriteLine($"Kolor: {statsInMemory.ColorAlert}");
@@ -74,7 +76,8 @@ while (true)
             Console.WriteLine($"Wartość maksymalna: {statsInMemory.Max}");
            
         }
-        static void AddRatingToTxtFile()
+        
+    static void AddRatingToTxtFile()
         {
             Console.WriteLine("Podaj imię pacjenta: ");
             var patientName = Console.ReadLine();
@@ -121,9 +124,3 @@ while (true)
         }
     }
     }
-
-
-            
-           
-            
-        

@@ -1,16 +1,14 @@
-﻿
-using System.Diagnostics;
-
-namespace HospitalApp
+﻿namespace HospitalApp
 {
     public class PatientInFile : PatientBase
     {
         private const string fileName = "ratings.txt";
+ 
         public PatientInFile(string name, string surname)
             : base(name, surname)
         {
         }
-
+ 
         public override void AddRating(float rating)
         {
             if (rating >= 0 && rating <= 100)
@@ -25,36 +23,7 @@ namespace HospitalApp
                 throw new Exception("Błędna wartość oceny");
             }
         }
-        public override void AddRating(string rating)
-        {
-            if (float.TryParse(rating, out float result))
-            {
-                this.AddRating(result);
-            }
-            else
-            {
-                throw new Exception("To nie jest wartość liczbowa");
-            }
-        }
-
-        public override void AddRating(int rating)
-        {
-            float result = (float)rating;
-            this.AddRating(result);
-        }
-
-        public override void AddRating(long rating)
-        {
-            float result = (float)rating;
-            this.AddRating(result);
-        }
-
-        public override void AddRating(double rating)
-        {
-            float result = (float)rating;
-            this.AddRating(result);
-        }
-
+        
         public override Stats GetStats()
         {
             var ratingsFromFile = this.ReadRatingsFromFile();
@@ -65,6 +34,7 @@ namespace HospitalApp
             }
             return stats;
         }
+        
         private List<float> ReadRatingsFromFile()
         {
             var ratings = new List<float>();
@@ -84,11 +54,10 @@ namespace HospitalApp
             }
             return ratings;
         }
+        
         public void RemoveDataFromFile()
         {
             File.WriteAllText(fileName, "");
         }
     }
 }
-
-
